@@ -10,6 +10,23 @@ root.geometry("502x320")
 root.configure(bg="#FFFFFF")
 root.resizable(False, False)
 
+
+def center(window):
+    window.update_idletasks()
+
+    # Tkinter way to find the screen resolution
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    size = tuple(int(_) for _ in window.geometry().split('+')[0].split('x'))
+    x = screen_width/2 - 5 * size[0] / 9
+    y = screen_height/2 - 3 * size[1] / 5
+
+    window.geometry("+%d+%d" % (x, y))
+
+
+center(root)
+
 # Create a label, add an image to it and make the label in the center of the window
 img = Image.open("weather_og.png")
 img = img.resize((500, 200))
